@@ -16,7 +16,7 @@ namespace Managers
         /// </summary>
         public UnityAction onSceneLoadDone = null;
         /// <summary>
-        /// 启动一个协程加载场景，此操作是异步的
+        /// 启动一个协程加载指定场景，此操作是异步的
         /// </summary>
         /// <param name="name">要加载的场景名字</param>
         public void LoadScene(string name)
@@ -25,14 +25,20 @@ namespace Managers
             StartCoroutine(LoadLevel(loadScene.buildIndex));
         }
         /// <summary>
-        /// 启动一个协程加载场景，此操作是异步的
+        /// 启动一个协程加载指定场景，此操作是异步的
         /// </summary>
         /// <param name="index">要加载的场景在场景构建中的索引</param>
         public void LoadScene(int index)
         {
             StartCoroutine(LoadLevel(index));
         }
-
+        /// <summary>
+        /// 启动一个协程加载当前活动场景在场景构建中的索引下一位，此操作是异步的
+        /// </summary>
+        public void LoadNextScene()
+        {
+            StartCoroutine(LoadLevel(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1));
+        }
         private IEnumerator LoadLevel(int index)
         {
             AsyncOperation async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(index);

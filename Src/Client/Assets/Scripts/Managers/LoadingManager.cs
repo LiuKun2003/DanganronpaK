@@ -19,6 +19,11 @@ namespace Managers
             GlobalContext.Properties["LogFileName"] = "log";//生成日志的文件名
             log4net.Config.XmlConfigurator.ConfigureAndWatch(file);//加载log4net配置文件
             #endregion
+            #region 初始化管理器配置
+            //初始化
+            DataManager.Instance.Init();
+            DialogueManager.Instance.LoadDialogues("DialoguesDefine.txt");//TODO:测试代码，应删除
+            #endregion
             #region 播放开场动画
             start_Vedio.gameObject.SetActive(true);
             start_Vedio.loopPointReached += EndReached;//监听动画是否播放完成
@@ -31,10 +36,8 @@ namespace Managers
                 yield return null;
             }
             start_Vedio.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.5f);
+            SceneManager.Instance.LoadNextScene();
             #endregion
-            //初始化一些游戏配置
-            SoundManager.Instance.PlayMusic("Gallery Music");//TODO:之后会把音乐名字改在配置中动态读取
         }
 
         private void EndReached(VideoPlayer vp)
