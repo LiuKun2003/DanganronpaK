@@ -22,7 +22,7 @@ namespace Managers
             #region 初始化管理器配置
             //初始化
             DataManager.Instance.Init();
-            DialogueManager.Instance.LoadDialogues("DialoguesDefine.txt");//TODO:测试代码，应删除
+            StoryManager.Instance.LoadStoryDefine("StoryDefine.txt");//TODO:测试代码，应删除
             #endregion
             #region 播放开场动画
             start_Vedio.gameObject.SetActive(true);

@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace Define
 {
-    public class DialoguesDefine
+    public class StoryDefine
     {
         /// <summary>
-        /// 对话内容
+        /// 内容文本
         /// </summary>
-        public string DialogueContent { get; set; }
+        public string Content { get; set; }
         /// <summary>
-        /// 下一句对话的索引
+        /// 下一段内容的索引
         /// </summary>
         public int Next { get; set; }
         /// <summary>
-        /// 标记当前对话的立绘显示
+        /// 标记当前内容的立绘显示
         /// </summary>
         public string CharacterMark { get; set; }
         /// <summary>
-        /// 标记当前对话要伴随的特效
+        /// 标记当前内容要伴随的特效
         /// </summary>
         public string Effects { get; set; }
     }

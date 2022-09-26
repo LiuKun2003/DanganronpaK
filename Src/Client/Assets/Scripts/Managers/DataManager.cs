@@ -18,14 +18,13 @@ namespace Managers
             
         }
         /// <summary>
-        /// 加载指定的DialoguesDefine
+        /// 加载指定的StoryDefine（此函数不应被手动调用，若想加载新的StoryDefine，请调用StoryManager.LoadStoryDefine）
         /// </summary>
-        /// <param name="name">DialoguesDefine的名字</param>
-        /// <returns>一个以配置表中的Key为主键的Dictionary</returns>
-        public Dictionary<int, DialoguesDefine> LoadDialogues(string name)
+        /// <param name="name">StoryDefine的文件名（带后缀）</param>
+        public Dictionary<int, Dictionary<int, StoryDefine>> LoadStoryDefine(string name)
         {
             string json = File.ReadAllText(DataPath + name);
-            return JsonConvert.DeserializeObject<Dictionary<int, DialoguesDefine>>(json);
+            return JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, StoryDefine>>>(json);
         }
     }
 }
